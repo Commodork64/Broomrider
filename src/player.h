@@ -14,4 +14,6 @@ private:
 public:
     Player();
     void Draw(sf::RenderWindow& window);
+    void MovePlayer(int speed);
+    int speed = 200;
 };

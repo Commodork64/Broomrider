@@ -35,13 +35,15 @@ int main()
                 default:
                     break;
             }
+            
+            player.MovePlayer(player.speed);
         }
 
         // clears the previous frame
         window.clear(sf::Color::Black);
-
+        // Setup things to be rendered
         player.Draw(windowPtr);
-
+        // Draw the things to be rendered
         window.display();
     }
     
