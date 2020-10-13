@@ -14,6 +14,11 @@ private:
 public:
     Player();
     void Draw(sf::RenderWindow& window);
-    void MovePlayer(int speed);
-    int speed = 200;
+    void Update(float dt);
+    int speed;
+    float velocityX;
+    float velocityY;
+    float maxVelocity;
+    float acceleration;
+    float friction;
 };
