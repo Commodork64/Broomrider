@@ -7,8 +7,7 @@ int main()
     // setup window
     sf::RenderWindow window(sf::VideoMode(800, 600), "Broomrider");
     sf::RenderWindow& windowPtr = window;
-    float deltaTime = 60;
-    window.setFramerateLimit(deltaTime);
+    window.setFramerateLimit(60);
 
     // create entities
     Player player;
@@ -36,9 +35,10 @@ int main()
                 default:
                     break;
             }
-            
-            player.Update(deltaTime);
         }
+
+        // Update the game
+        player.Update();
 
         // clears the previous frame
         window.clear(sf::Color::Black);

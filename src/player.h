@@ -20,5 +20,5 @@ private:
 public:
     Player();
     void Draw(sf::RenderWindow& window);
-    void Update(float dt);
+    void Update();
 };
