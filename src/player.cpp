@@ -6,17 +6,16 @@
 Player::Player()
 {
     texture.loadFromFile("../res/player.png");
-    position.x = 50.0f;
+    position.x = 200.0f;
     position.y = 200.0f;
     sprite.setTexture(texture);
     sprite.setPosition(position);
 
     // gravity
     sf::Vector2f velocity(0.0f, 0.0f);
-    float maxVelocity = 100;
-    float acceleration = 40;
+    float maxVelocity = 1000.0f;
+    float acceleration = 40.0f;
     float friction = 0.93f;
-
 }
 
 void Player::Draw(sf::RenderWindow& window)
@@ -24,31 +23,33 @@ void Player::Draw(sf::RenderWindow& window)
     window.draw(sprite);
 }
 
-void Player::Update(Player player, float dt)
+void Player::Update(float dt)
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && player.velocity.x < player.maxVelocity)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
     {
-        player.velocity.x -= player.acceleration * dt;
+        velocity.x = velocity.x - acceleration * dt;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && player.velocity.x < player.maxVelocity)
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
     {
-        player.velocity.x += player.acceleration * dt;
+        velocity.x = velocity.x + acceleration * dt;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && player.velocity.y < player.maxVelocity)
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
     {
-        player.velocity.y -= player.acceleration * dt;
+        velocity.y = velocity.y - acceleration * dt;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && player.velocity.y < player.maxVelocity)
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
     {
-        player.velocity.y += player.acceleration * dt;
+        velocity.y = velocity.y + acceleration * dt;
     }
 
-    sprite.move(player.velocity.x, player.velocity.y);
+    sprite.move(velocity.x, velocity.y);
 
-    player.velocity.x = velocity.x * player.friction;
-    player.velocity.y = velocity.y * player.friction;
+    velocity.x = velocity.x * friction;
+    velocity.y = velocity.y * friction;
 
-    std::cout << player.velocity.x;
-    std::cout << player.velocity.y;
+    std::cout << "x: ";
+    std::cout << velocity.x << std::endl;
+    std::cout << "y: ";
+    std::cout << velocity.y << std::endl;
 
 }

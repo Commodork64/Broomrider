@@ -12,14 +12,13 @@ private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::Vector2f position;
-
-public:
-    Player();
-    void Draw(sf::RenderWindow& window);
-    void Update(Player player, float dt);
-    std::string vecToString(sf::Vector2f v);
     sf::Vector2f velocity;
     float maxVelocity;
     float acceleration;
     float friction;
+
+public:
+    Player();
+    void Draw(sf::RenderWindow& window);
+    void Update(float dt);
 };

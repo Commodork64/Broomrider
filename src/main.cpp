@@ -28,7 +28,7 @@ int main()
                     break;
                 
                 case sf::Event::LostFocus:
-                    //TODO pause();
+                    // TODO pause();
 
                 case sf::Event::GainedFocus:
                     // TODO: resume();
@@ -37,7 +37,7 @@ int main()
                     break;
             }
             
-            player.Update(player, deltaTime);
+            player.Update(deltaTime);
         }
 
         // clears the previous frame
