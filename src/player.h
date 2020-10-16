@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/System/Vector2.hpp>
+#include <string>
 
 class Player
 {
@@ -14,10 +16,9 @@ private:
 public:
     Player();
     void Draw(sf::RenderWindow& window);
-    void Update(float dt);
-    int speed;
-    float velocityX;
-    float velocityY;
+    void Update(Player player, float dt);
+    std::string vecToString(sf::Vector2f v);
+    sf::Vector2f velocity;
     float maxVelocity;
     float acceleration;
     float friction;

@@ -37,7 +37,7 @@ int main()
                     break;
             }
             
-            player.Update(deltaTime);
+            player.Update(player, deltaTime);
         }
 
         // clears the previous frame
@@ -47,6 +47,5 @@ int main()
         // Draw the things to be rendered
         window.display();
     }
-    
     return 0;
 }
