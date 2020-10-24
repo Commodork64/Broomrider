@@ -12,10 +12,7 @@ Player::Player()
     sprite.setPosition(position);
 
     // gravity
-    sf::Vector2f velocity(2.0f, 2.0f);
-    float maxVelocity = 1000.0f;
-    float acceleration = 40.0f;
-    float friction = 0.01f;
+    sf::Vector2f velocity(0.0f, 0.0f);
 }
 
 void Player::Draw(sf::RenderWindow& window)
@@ -25,31 +22,30 @@ void Player::Draw(sf::RenderWindow& window)
 
 void Player::Update()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) && velocity.x >= -maxVelocity)
     {
-        velocity.x++;
+        velocity.x -= acceleration;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) && velocity.x <= maxVelocity)
     {
-        velocity.x = velocity.x + acceleration;
+        velocity.x += acceleration;
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) && velocity.y >= -maxVelocity)
     {
-        velocity.y = velocity.y - acceleration;
+        velocity.y -= acceleration;
     }
-    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S) && velocity.y <= maxVelocity)
     {
-        velocity.y = velocity.y + acceleration;
+        velocity.y += acceleration;
     }
 
     sprite.move(velocity.x, velocity.y);
 
     velocity.x = velocity.x * friction;
-    //velocity.y = velocity.y * friction;
+    velocity.y = velocity.y * friction;
 
     std::cout << "x: ";
     std::cout << velocity.x << std::endl;
     std::cout << "y: ";
     std::cout << velocity.y << std::endl;
-
 }

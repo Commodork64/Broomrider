@@ -5,7 +5,7 @@
 int main()
 {
     // setup window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Broomrider");
+    sf::RenderWindow window(sf::VideoMode(1200, 800), "Broomrider");
     sf::RenderWindow& windowPtr = window;
     window.setFramerateLimit(60);
 
@@ -42,8 +42,10 @@ int main()
 
         // clears the previous frame
         window.clear(sf::Color::Black);
+
         // Setup things to be rendered
         player.Draw(windowPtr);
+
         // Draw the things to be rendered
         window.display();
     }
