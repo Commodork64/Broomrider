@@ -11,13 +11,13 @@ private:
     // the creation of the program and pass them around like that instead.
     sf::Texture texture;
     sf::Sprite sprite;
-
-public:
     sf::Vector2f position;
     sf::Vector2f velocity;
     const float maxVelocity = 20;
-    const float acceleration = 4;
-    const float friction = 0.93;
+    const float acceleration = 2;
+    const float friction = 0.96;
+
+public:
     Player();
     void Draw(sf::RenderWindow& window);
     void Update();
